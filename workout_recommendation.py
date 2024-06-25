@@ -33,6 +33,20 @@ exercises = {"chest":["Barbell Flat Bench Press", "Seated Chest Press Machine", 
 exercise_counter = 0
 exercises_list = []
 
+def choose_exercises(exercise_limit):
+    exercise_counter_func = 0
+    exercise_list_func = []
+    print(f"You may choose {exercise_limit} different exercises:")
+    for i in exercises[input_training1]:
+        if exercise_counter_func < exercise_limit:
+            choice = input(f"Would you like to add {i} to your regime? (Y = Yes | Anything else = NO)...\n")
+            if choice.lower() == "y":
+                exercise_list_func.append(i)
+                exercise_counter_func += 1
+                print(f"{i} has been add and you currently have {str(exercise_counter_func)} exercise in your regime.")
+    return exercise_list_func
+    
+
 if input_training1 != "legs":
     print("You may choose three different exercises:")
 
@@ -54,14 +68,4 @@ else:
                 exercise_counter += 1
                 print(f"{i} has been add and you currently have {str(exercise_counter)} exercise in your regime.")
 
-def choose_exercises(input_training, exercise_limit):
-        exercise_counter_func = 0
-        exercise_list_func = []
-        print(f"You may choose {exercise_limit} different exercises:")
-        for i in exercises[input_training]:
-            if exercise_counter < exercise_limit:
-                choice = input(f"Would you like to add {i} to your regime? (Y = Yes | Anything else = NO)...\n")
-                if choice.lower() == "y":
-                    exercise_list_func.append(i)
-                    exercise_counter_func += 1
-                    print(f"{i} has been add and you currently have {str(exercise_counter)} exercise in your regime.")
+
