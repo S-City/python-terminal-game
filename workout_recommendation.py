@@ -33,39 +33,32 @@ exercises = {"chest":["Barbell Flat Bench Press", "Seated Chest Press Machine", 
 exercise_counter = 0
 exercises_list = []
 
+
 def choose_exercises(exercise_limit):
     exercise_counter_func = 0
     exercise_list_func = []
-    print(f"You may choose {exercise_limit} different exercises:")
+    print(f"You may choose {exercise_limit} different exercises: (Select Y = Yes | Anything else = NO)...")
     for i in exercises[input_training1]:
         if exercise_counter_func < exercise_limit:
-            choice = input(f"Would you like to add {i} to your regime? (Y = Yes | Anything else = NO)...\n")
+            choice = input(f"Would you like to add {i}?\n")
             if choice.lower() == "y":
                 exercise_list_func.append(i)
                 exercise_counter_func += 1
                 print(f"{i} has been add and you currently have {str(exercise_counter_func)} exercise in your regime.")
-    return exercise_list_func
+    for i in exercise_list_func:
+        exercises_list.append(i)
+
     
 
 if input_training1 != "legs":
-    print("You may choose three different exercises:")
-
-    for i in exercises[input_training1]:
-        if exercise_counter < 3:
-            choice = input(f"Would you like to add {i} to your regime? (Y = Yes | Anything else = NO)...\n")
-            if choice.lower() == "y":
-                exercises_list.append(i)
-                exercise_counter += 1
-                print(f"{i} has been add and you currently have {str(exercise_counter)} exercise in your regime.")
+    choose_exercises(3)
+    exercise_counter = len(exercises_list)
+    print(exercises_list, exercise_counter)
 
 else:
-    print("You may choose six different exercises:")
-    for i in exercises[input_training1]:
-        if exercise_counter < 6:
-            choice = input(f"Would you like to add {i} to your regime? (Y = Yes | Anything else = NO)...\n")
-            if choice.lower() == "y":
-                exercises_list.append(i)
-                exercise_counter += 1
-                print(f"{i} has been add and you currently have {str(exercise_counter)} exercise in your regime.")
+    choose_exercises(6)
+    exercise_counter = len(exercises_list)
+    print(exercises_list, exercise_counter)
+
 
 
