@@ -17,6 +17,16 @@ else:
         input_training1 = input().lower()
     print(f"It seems you want to train {input_training1}!")
 
+
+def choose_muscle_group(choosen_muscle):
+    if choosen_muscle in muscle_group_options:
+        print(f"It seems you want to train {input_training1}!")
+    else:
+        while input_training1 not in muscle_group_options:
+            print("Option Invalid! Please ensure the spelling is correct and try again: ")
+            input_training1 = input().lower()
+        print(f"It seems you want to train {input_training1}!")
+
 print(f"Please choose from the following options the exercises you want to do!")
 
 exercises = {"chest":["Barbell Flat Bench Press", "Seated Chest Press Machine", "Cable Pulley High Chest Fly", 
@@ -38,13 +48,19 @@ def choose_exercises(exercise_limit):
     exercise_counter_func = 0
     exercise_list_func = []
     print(f"You may choose {exercise_limit} different exercises: (Select Y = Yes | Anything else = NO)...")
-    for i in exercises[input_training1]:
+    
+    while len(exercise_list_func) < exercise_limit:
+        for i in exercises[input_training1]:
+            if i not in exercise_list_func and exercise_counter_func < exercise_limit:
+                choice = input(f"Would you like to add {i}?\n")
+                if choice.lower() == "y":
+                    exercise_list_func.append(i)
+                    exercise_counter_func += 1
+                    print(f"{i} has been add and you currently have {str(exercise_counter_func)} exercise in your regime.")
         if exercise_counter_func < exercise_limit:
-            choice = input(f"Would you like to add {i}?\n")
-            if choice.lower() == "y":
-                exercise_list_func.append(i)
-                exercise_counter_func += 1
-                print(f"{i} has been add and you currently have {str(exercise_counter_func)} exercise in your regime.")
+            print(f"You still need to choose {exercise_limit - len(exercise_list_func)} more exercises...")
+
+
     for i in exercise_list_func:
         exercises_list.append(i)
 
@@ -52,8 +68,12 @@ def choose_exercises(exercise_limit):
 
 if input_training1 != "legs":
     choose_exercises(3)
-    exercise_counter = len(exercises_list)
+    print(f"""You have choosen {input_training1} as a muscle group to train which includes {len(exercises_list)} different exercises.\n
+          please select """)
+    exercise_counter += len(exercises_list)
+
     print(exercises_list, exercise_counter)
+
 
 else:
     choose_exercises(6)
