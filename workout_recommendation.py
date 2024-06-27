@@ -10,7 +10,7 @@ muscle_group_options = ["chest", "back", "shoulders", "biceps", "triceps", "legs
 
 
 def choose_muscle_group(choosen_muscle):
-    choosen_muscle.lower()
+    choosen_muscle = choosen_muscle.lower()
     while choosen_muscle not in muscle_group_options:
         print("Option Invalid! Please ensure the spelling is correct and try again: ")
         choosen_muscle = input().lower()
